@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 652111050}
   - component: {fileID: 652111049}
   - component: {fileID: 652111048}
+  - component: {fileID: 652111052}
   m_Layer: 0
   m_Name: Asteroid_1
   m_TagString: Untagged
@@ -213,12 +214,78 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652111047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.97, y: 0, z: 3.9}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &652111052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652111047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106430053f0f8b544880e8705fb092a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Orbit: {fileID: 0}
+  Center: {fileID: 0}
+  LdPeriapsis: {x: 0, y: 0, z: -1}
+  KmSVelocity: {x: 0, y: 0, z: 1}
+  Eccentricity: 1
+--- !u!1 &808171529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 808171531}
+  - component: {fileID: 808171530}
+  m_Layer: 0
+  m_Name: Orbit_Asteroid_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &808171530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808171529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9958bed53408b4419db2742ecced7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Center: {fileID: 1001141012}
+  Eccentricity: 0.3
+  LdSemiMajorAxis: 10
+  OrbitalPlane: {x: 0, y: 0}
+  ArgumentOfPeriapsis: 0
+--- !u!4 &808171531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808171529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1001141007
 GameObject:
@@ -232,6 +299,7 @@ GameObject:
   - component: {fileID: 1001141010}
   - component: {fileID: 1001141009}
   - component: {fileID: 1001141008}
+  - component: {fileID: 1001141012}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -317,6 +385,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1001141012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001141007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6447d048b6550fe4e8c652d0a1ad05cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmMass: 333000
+  LdRadius: 0.55
 --- !u!1 &1008097672
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +411,7 @@ GameObject:
   - component: {fileID: 1008097675}
   - component: {fileID: 1008097674}
   - component: {fileID: 1008097673}
+  - component: {fileID: 1008097677}
   m_Layer: 0
   m_Name: Planet_1
   m_TagString: Untagged
@@ -407,13 +490,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008097672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.9, y: 0, z: 0}
+  m_LocalPosition: {x: 22, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1008097677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008097672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106430053f0f8b544880e8705fb092a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Orbit: {fileID: 0}
+  Center: {fileID: 0}
+  LdPeriapsis: {x: 0, y: 0, z: -2}
+  KmSVelocity: {x: 0, y: 0, z: 1}
+  Eccentricity: 1
 --- !u!1 &1088753660
 GameObject:
   m_ObjectHideFlags: 0
