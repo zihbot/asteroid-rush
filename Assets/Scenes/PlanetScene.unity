@@ -265,10 +265,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Center: {fileID: 181847100}
-  Eccentricity: 0
+  Eccentricity: 0.5
   LdSemiMajorAxis: 12
   OrbitalPlane: {x: 0, y: 0}
   ArgumentOfPeriapsis: 0
+  positions: []
+  radii: []
 --- !u!4 &1697313446
 Transform:
   m_ObjectHideFlags: 0
@@ -480,7 +482,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Orbit: {fileID: 1697313445}
-  Center: {fileID: 0}
-  LdPeriapsis: {x: 0, y: 0, z: -1}
-  KmSVelocity: {x: 0, y: 0, z: 0}
-  Eccentricity: 1

@@ -5,13 +5,9 @@ using UnityEngine;
 public class Orbitter : MonoBehaviour
 {
     public Orbit Orbit;
-    public CelestialBody Center;
-    public Vector3 LdPeriapsis = Vector3.back;
-    public Vector3 KmSVelocity = Vector3.zero;
-    public float Eccentricity = 1f;
-
-    private float DPeriod = 300;
-    private float DTime = 0; // Time since periapsis
+    private float dPeriod = 20;
+    private float dTime = 0; // Time since periapsis
+    private float progress = 0; // main anomaly / 2PI
 
     void Start()
     {
@@ -20,13 +16,25 @@ public class Orbitter : MonoBehaviour
 
     void Update()
     {
-        Vector3 kmMove = Time.deltaTime * KmSVelocity;
-        gameObject.transform.position += kmMove;
 
-        DTime += Time.deltaTime;
-        if (DTime > DPeriod) {
-            DTime -= DPeriod;
+        dTime += Time.deltaTime;
+        if (dTime > dPeriod)
+        {
+            dTime -= dPeriod;
         }
-        float M = DTime/DPeriod;
+
+
+
+        float pos = progress * Orbit.resolution;
+        int posFloor = Mathf.FloorToInt(pos);
+
+        float radius = Mathf.Lerp(Orbit.radii[posFloor], Orbit.radii[(posFloor + 1 >= Orbit.resolution ? 0 : posFloor + 1)], pos - posFloor);
+        gameObject.transform.position = Vector3.Lerp(Orbit.positions[posFloor], Orbit.positions[(posFloor + 1 >= Orbit.resolution ? 0 : posFloor + 1)], pos - posFloor);
+
+        progress += 0.05f / radius / radius;
+        if (progress >= 1)
+        {
+            progress -= Mathf.Floor(progress);
+        }
     }
 }

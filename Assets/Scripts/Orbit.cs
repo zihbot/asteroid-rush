@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Orbit : MonoBehaviour
 {
-    private const int resolution = 720;
+    public const int resolution = 720;
 
     public CelestialBody Center;
     public float Eccentricity;
@@ -10,7 +10,8 @@ public class Orbit : MonoBehaviour
     public Vector2 OrbitalPlane;
     public float ArgumentOfPeriapsis;
 
-    Vector3[] positions;
+    public Vector3[] positions;
+    public float[] radii;
 
     private bool draw = true;
 
@@ -25,13 +26,17 @@ public class Orbit : MonoBehaviour
         lineRenderer.positionCount = resolution;
 
         positions = new Vector3[resolution];
-        for (int i = 0; i < resolution; i++) {
+        radii = new float[resolution];
+        for (int i = 0; i < resolution; i++)
+        {
             float theta = 2 * Mathf.PI * i / resolution;
             float r = LdSemiMajorAxis * (1 - Eccentricity * Eccentricity) / (1 + Eccentricity * Mathf.Cos(theta));
-            if (r > 1000) {
+            if (r > 1000)
+            {
                 lineRenderer.positionCount = i;
                 break;
             }
+            radii[i] = r;
             positions[i] = new Vector3(Mathf.Sin(theta), 0, Mathf.Cos(theta)) * r;
         }
 
@@ -40,5 +45,12 @@ public class Orbit : MonoBehaviour
 
     void Update()
     {
+    }
+
+    public Vector3 getPosition(float progress)
+    {
+        float pos = progress * resolution;
+        int floor = Mathf.FloorToInt(pos);
+        return Vector3.Lerp(positions[floor], positions[(floor + 1 >= resolution ? 0 : floor + 1)], pos - floor);
     }
 }
