@@ -23,14 +23,14 @@ public class Orbit : MonoBehaviour
     public Vector3[] positions;
     public float[] ldRadii;
     public float[] ldDSpeeds;
-    public float[] ldDAngularSpeeds;
+    public float[] frequencies;
 
     void Awake()
     {
         positions = new Vector3[resolution];
         ldRadii = new float[resolution];
         ldDSpeeds = new float[resolution];
-        ldDAngularSpeeds = new float[resolution];
+        frequencies = new float[resolution];
         pointCount = resolution;
 
         float stdGravParam = center.emMass * ldEmDGravitationalConst;
@@ -45,7 +45,8 @@ public class Orbit : MonoBehaviour
                 break;
             }
             ldRadii[i] = r;
-            ldDSpeeds[i] = stdGravParam * (2f/r - reciprocalSemiMajorAxis);
+            ldDSpeeds[i] = Mathf.Sqrt(stdGravParam * (2f/r - reciprocalSemiMajorAxis));
+            frequencies[i] = ldDSpeeds[i] / r / 2 / Mathf.PI;
             positions[i] = new Vector3(Mathf.Sin(trueAnomaly), 0, Mathf.Cos(trueAnomaly)) * r;
         }
     }

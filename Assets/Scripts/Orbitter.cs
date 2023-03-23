@@ -30,11 +30,11 @@ public class Orbitter : MonoBehaviour
         Vector3 position = Vector3.Lerp(orbit.positions[posFloor], orbit.positions[posCeil], pos - posFloor);
         float radius = Mathf.Lerp(orbit.ldRadii[posFloor], orbit.ldRadii[posCeil], pos - posFloor);
         float speed = Mathf.Lerp(orbit.ldDSpeeds[posFloor], orbit.ldDSpeeds[posCeil], pos - posFloor);
-        float angularSpeed = Mathf.Lerp(orbit.ldDAngularSpeeds[posFloor], orbit.ldDAngularSpeeds[posCeil], pos - posFloor);
+        float frequency = Mathf.Lerp(orbit.frequencies[posFloor], orbit.frequencies[posCeil], pos - posFloor);
 
         gameObject.transform.position = position;
 
-        progress += 0.05f / radius / radius;
+        progress += frequency * Time.deltaTime;
         if (progress >= 1)
         {
             progress -= Mathf.Floor(progress);

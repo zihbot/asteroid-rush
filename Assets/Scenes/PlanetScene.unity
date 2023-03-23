@@ -318,7 +318,7 @@ MonoBehaviour:
   positions: []
   ldRadii: []
   ldDSpeeds: []
-  ldDAngularSpeeds: []
+  frequencies: []
 --- !u!4 &1305565820
 Transform:
   m_ObjectHideFlags: 0
@@ -425,14 +425,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointCount: 0
   center: {fileID: 181847100}
-  eccentricity: 0.5
-  ldSemiMajorAxis: 10
+  eccentricity: 0.8
+  ldSemiMajorAxis: 0.5
   orbitalPlane: {x: 0, y: 0}
   argumentOfPeriapsis: 0
   positions: []
   ldRadii: []
   ldDSpeeds: []
-  ldDAngularSpeeds: []
+  frequencies: []
 --- !u!1 &2029886261
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,4 +613,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106430053f0f8b544880e8705fb092a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbit: {fileID: 1697313447}
+  orbit: {fileID: 1305565819}
