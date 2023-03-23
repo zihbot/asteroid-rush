@@ -233,8 +233,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6447d048b6550fe4e8c652d0a1ad05cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmMass: 1
+  emMass: 1
   LdRadius: 0.001
+--- !u!1 &294966314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 294966316}
+  - component: {fileID: 294966315}
+  m_Layer: 0
+  m_Name: Orbit_2_Renderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &294966315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294966314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20b65fcbb465444ba49477824cd9990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbit: {fileID: 1305565819}
+--- !u!4 &294966316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294966314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1305565818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305565820}
+  - component: {fileID: 1305565819}
+  m_Layer: 0
+  m_Name: Orbit_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1305565819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305565818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9958bed53408b4419db2742ecced7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointCount: 0
+  center: {fileID: 181847100}
+  eccentricity: 0.5
+  ldSemiMajorAxis: 20
+  orbitalPlane: {x: 0, y: 0}
+  argumentOfPeriapsis: 0
+  positions: []
+  ldRadii: []
+  ldDSpeeds: []
+  ldDAngularSpeeds: []
+--- !u!4 &1305565820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305565818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1355634753
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,13 +424,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointCount: 0
-  Center: {fileID: 181847100}
-  Eccentricity: 0.5
-  LdSemiMajorAxis: 10
-  OrbitalPlane: {x: 0, y: 0}
-  ArgumentOfPeriapsis: 0
+  center: {fileID: 181847100}
+  eccentricity: 0.5
+  ldSemiMajorAxis: 10
+  orbitalPlane: {x: 0, y: 0}
+  argumentOfPeriapsis: 0
   positions: []
-  radii: []
+  ldRadii: []
+  ldDSpeeds: []
+  ldDAngularSpeeds: []
 --- !u!1 &2029886261
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +528,6 @@ GameObject:
   - component: {fileID: 2142407834}
   - component: {fileID: 2142407833}
   - component: {fileID: 2142407832}
-  - component: {fileID: 2142407831}
   - component: {fileID: 2142407835}
   m_Layer: 0
   m_Name: Ship_1
@@ -436,20 +536,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &2142407831
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142407830}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &2142407832
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -527,4 +613,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106430053f0f8b544880e8705fb092a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Orbit: {fileID: 1697313447}
+  orbit: {fileID: 1697313447}

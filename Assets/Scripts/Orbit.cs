@@ -14,32 +14,39 @@ public class Orbit : MonoBehaviour
     public const int resolution = 720;
     public int pointCount = 0;
 
-    public CelestialBody Center;
-    public float Eccentricity;
-    public float LdSemiMajorAxis;
-    public Vector2 OrbitalPlane;
-    public float ArgumentOfPeriapsis;
+    public CelestialBody center;
+    public float eccentricity;
+    public float ldSemiMajorAxis;
+    public Vector2 orbitalPlane;
+    public float argumentOfPeriapsis;
 
     public Vector3[] positions;
-    public float[] radii;
+    public float[] ldRadii;
+    public float[] ldDSpeeds;
+    public float[] ldDAngularSpeeds;
 
-    void Start()
+    void Awake()
     {
         positions = new Vector3[resolution];
-        radii = new float[resolution];
+        ldRadii = new float[resolution];
+        ldDSpeeds = new float[resolution];
+        ldDAngularSpeeds = new float[resolution];
         pointCount = resolution;
+
+        float stdGravParam = center.emMass * ldEmDGravitationalConst;
+        float reciprocalSemiMajorAxis = 1f / ldSemiMajorAxis;
         for (int i = 0; i < resolution; i++)
         {
             float trueAnomaly = 2 * Mathf.PI * i / resolution;
-            float r = LdSemiMajorAxis * (1 - Eccentricity * Eccentricity) / (1 + Eccentricity * Mathf.Cos(trueAnomaly));
+            float r = ldSemiMajorAxis * (1 - eccentricity * eccentricity) / (1 + eccentricity * Mathf.Cos(trueAnomaly));
             if (r > 1000)
             {
                 pointCount = i;
                 break;
             }
-            radii[i] = r;
+            ldRadii[i] = r;
+            ldDSpeeds[i] = stdGravParam * (2f/r - reciprocalSemiMajorAxis);
             positions[i] = new Vector3(Mathf.Sin(trueAnomaly), 0, Mathf.Cos(trueAnomaly)) * r;
         }
     }
-
 }

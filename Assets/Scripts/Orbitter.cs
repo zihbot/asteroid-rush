@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Orbitter : MonoBehaviour
 {
-    public Orbit Orbit;
+    public Orbit orbit;
     private float dPeriod = 20;
     private float dTime = 0; // Time since periapsis
     private float progress = 0; // main anomaly / 2PI
@@ -23,13 +23,16 @@ public class Orbitter : MonoBehaviour
             dTime -= dPeriod;
         }
 
-
-
         float pos = progress * Orbit.resolution;
         int posFloor = Mathf.FloorToInt(pos);
+        int posCeil = posFloor + 1 >= orbit.pointCount ? 0 : posFloor + 1;
 
-        float radius = Mathf.Lerp(Orbit.radii[posFloor], Orbit.radii[(posFloor + 1 >= Orbit.resolution ? 0 : posFloor + 1)], pos - posFloor);
-        gameObject.transform.position = Vector3.Lerp(Orbit.positions[posFloor], Orbit.positions[(posFloor + 1 >= Orbit.resolution ? 0 : posFloor + 1)], pos - posFloor);
+        Vector3 position = Vector3.Lerp(orbit.positions[posFloor], orbit.positions[posCeil], pos - posFloor);
+        float radius = Mathf.Lerp(orbit.ldRadii[posFloor], orbit.ldRadii[posCeil], pos - posFloor);
+        float speed = Mathf.Lerp(orbit.ldDSpeeds[posFloor], orbit.ldDSpeeds[posCeil], pos - posFloor);
+        float angularSpeed = Mathf.Lerp(orbit.ldDAngularSpeeds[posFloor], orbit.ldDAngularSpeeds[posCeil], pos - posFloor);
+
+        gameObject.transform.position = position;
 
         progress += 0.05f / radius / radius;
         if (progress >= 1)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CelestialBody : MonoBehaviour
 {
-    public float EmMass = 1;
+    public float emMass = 1;
     public float LdRadius = 0.001f;
 
     void Start()
