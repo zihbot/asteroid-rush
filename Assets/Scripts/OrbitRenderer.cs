@@ -21,7 +21,7 @@ public class OrbitRenderer : MonoBehaviour
         for (int i = 0; i < lineWidthFrames; i++)
         {
             Vector3 pos = orbit.positions[(Orbit.resolution * i) / lineWidthFrames];
-            keyframes[i] = new Keyframe(1.0f * i / lineWidthFrames, Vector3.Distance(Camera.main.transform.position, pos) / 100f);
+            keyframes[i] = new Keyframe(1.0f * i / lineWidthFrames, Vector3.Distance(Camera.main.transform.position, pos) / 200f);
         }
         lineRenderer.widthCurve = new AnimationCurve(keyframes);
     }
