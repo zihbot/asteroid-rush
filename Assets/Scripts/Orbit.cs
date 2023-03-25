@@ -25,7 +25,13 @@ public class Orbit : MonoBehaviour
     public float[] ldDSpeeds;
     public float[] frequencies;
 
-    void Awake()
+    void Awake() {
+        if (center != null) {
+            Setup();
+        }
+    }
+
+    public void Setup()
     {
         positions = new Vector3[resolution];
         ldRadii = new float[resolution];
