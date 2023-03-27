@@ -11,7 +11,6 @@ public class OrbitPlanner : MonoBehaviour
     {
         transfer = gameObject.AddComponent<Orbit>();
         transfer.center = origin.center;
-        transfer.eccentricity = 0.9f;
         float destinationTheta = 0.5f;
         int destinationThetaRes = Mathf.FloorToInt(destinationTheta * Orbit.resolution);
 
