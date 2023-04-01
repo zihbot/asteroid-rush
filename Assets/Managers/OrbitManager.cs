@@ -14,4 +14,9 @@ public class OrbitManager : MonoBehaviour
         }
         Instance = this;
     }
+
+    public Orbit Create()
+    {
+        return null;
+    }
 }

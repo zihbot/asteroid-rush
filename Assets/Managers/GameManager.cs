@@ -15,6 +15,15 @@ public class GameManager : MonoBehaviour
         Instance = this;
         initManagers();
     }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    public static void LoadMain()
+    {
+        GameObject main = new GameObject("GameManager");
+        GameObject.DontDestroyOnLoad(main);
+        main.AddComponent<GameManager>();
+    }
+
     void initManagers()
     {
         gameObject.AddComponent<OrbitManager>();
