@@ -1,31 +1,21 @@
 using UnityEngine;
 
-public class OrbitPlanner : MonoBehaviour
+public static class OrbitPlanner
 {
-    public Orbit origin;
-    public Orbit destination;
-    private Orbit transfer;
-    private OrbitRenderer transferRenderer;
 
-    void Start()
+    public static Orbit TransferOrbit(Orbit origin, Orbit destination)
     {
-        transfer = gameObject.AddComponent<Orbit>();
-        transfer.center = origin.center;
+        CelestialBody center = GameManager.Instance.Center;
         float destinationTheta = 0.5f;
         int destinationThetaRes = Mathf.FloorToInt(destinationTheta * Orbit.resolution);
 
         float radiusPeriapsis = origin.ldRadii[0];
         float radiusApoapsis = destination.ldRadii[destinationThetaRes];
         float majorAxis = radiusPeriapsis + radiusApoapsis;
-        transfer.ldSemiMajorAxis = majorAxis / 2f;
-        transfer.eccentricity = (radiusApoapsis - radiusPeriapsis) / majorAxis;
-        transfer.Setup();
+        float ldSemiMajorAxis = majorAxis / 2f;
+        float eccentricity = (radiusApoapsis - radiusPeriapsis) / majorAxis;
+        Orbit transfer = new Orbit(center, eccentricity, ldSemiMajorAxis);
 
-        transferRenderer = gameObject.AddComponent<OrbitRenderer>();
-        transferRenderer.orbit = transfer;
-    }
-
-    void Update()
-    {
+        return transfer;
     }
 }

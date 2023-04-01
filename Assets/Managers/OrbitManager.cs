@@ -13,10 +13,25 @@ public class OrbitManager : MonoBehaviour
             return;
         }
         Instance = this;
+        Init();
     }
 
-    public Orbit Create()
+    private List<Orbit> orbits = new List<Orbit>();
+    private List<GameObject> orbitRenderers = new List<GameObject>();
+
+    void Init()
     {
-        return null;
+
+    }
+
+    public Orbit Create(Orbit orbit)
+    {
+        orbits.Add(orbit);
+
+        GameObject orbitRenderer = new GameObject("OrbitRenderer");
+        orbitRenderers.Add(orbitRenderer);
+        OrbitRenderer orComponent = orbitRenderer.AddComponent<OrbitRenderer>();
+        orComponent.orbit = orbit;
+        return orbit;
     }
 }

@@ -13,7 +13,13 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        initManagers();
+        init();
+    }
+
+    public CelestialBody Center {
+        get {
+            return GameObject.FindObjectOfType<CelestialBody>();
+        }
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -24,8 +30,12 @@ public class GameManager : MonoBehaviour
         main.AddComponent<GameManager>();
     }
 
-    void initManagers()
+    void init()
     {
         gameObject.AddComponent<OrbitManager>();
+    }
+
+    private void Start() {
+        InitScene.InitScenes();
     }
 }

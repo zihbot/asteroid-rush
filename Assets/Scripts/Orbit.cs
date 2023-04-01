@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Orbit : MonoBehaviour
+public class Orbit
 {
     // 1 ld = 3.844 * 10^8 m
     // 1 em = 5.972 * 10^24 kg
@@ -25,10 +25,17 @@ public class Orbit : MonoBehaviour
     public float[] ldDSpeeds;
     public float[] frequencies;
 
-    void Awake() {
-        if (center != null) {
-            Setup();
-        }
+    public Orbit() : this(null, 0f, 0f)
+    {
+    }
+
+    public Orbit(CelestialBody center, float eccentricity, float ldSemiMajorAxis)
+    {
+        this.center = center;
+        this.eccentricity = eccentricity;
+        this.ldSemiMajorAxis = ldSemiMajorAxis;
+
+        Setup();
     }
 
     public void Setup()
@@ -51,7 +58,7 @@ public class Orbit : MonoBehaviour
                 break;
             }
             ldRadii[i] = r;
-            ldDSpeeds[i] = Mathf.Sqrt(stdGravParam * (2f/r - reciprocalSemiMajorAxis));
+            ldDSpeeds[i] = Mathf.Sqrt(stdGravParam * (2f / r - reciprocalSemiMajorAxis));
             frequencies[i] = ldDSpeeds[i] / r / 2 / Mathf.PI;
             positions[i] = new Vector3(Mathf.Sin(trueAnomaly), 0, Mathf.Cos(trueAnomaly)) * r;
         }
