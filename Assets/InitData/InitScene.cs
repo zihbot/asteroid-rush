@@ -12,16 +12,14 @@ public class InitScene : MonoBehaviour
         switch (sceneName)
         {
             case "PlanetScene":
-                Orbit origin = new Orbit(GameManager.Instance.Center, .5f, .5f);
-                Orbit destination = new Orbit(GameManager.Instance.Center, .8f, 1f);
+                Orbit origin = new Orbit(GameManager.Instance.Center, .2f, .3f);
+                Orbit destination = new Orbit(GameManager.Instance.Center, .6f, 1.5f);
                 Orbit transfer = OrbitPlanner.TransferOrbit(origin, destination);
-                new GameObject("Init");
                 OrbitManager.Instance.Create(origin);
                 OrbitManager.Instance.Create(destination);
                 OrbitManager.Instance.Create(transfer);
                 return;
             default:
-                new GameObject("Default");
                 return;
         };
     }

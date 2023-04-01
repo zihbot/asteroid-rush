@@ -17,7 +17,7 @@ public class OrbitManager : MonoBehaviour
     }
 
     private List<Orbit> orbits = new List<Orbit>();
-    private List<GameObject> orbitRenderers = new List<GameObject>();
+    private Dictionary<Orbit, GameObject> orbitRenderers = new Dictionary<Orbit, GameObject>();
 
     void Init()
     {
@@ -29,7 +29,7 @@ public class OrbitManager : MonoBehaviour
         orbits.Add(orbit);
 
         GameObject orbitRenderer = new GameObject("OrbitRenderer");
-        orbitRenderers.Add(orbitRenderer);
+        orbitRenderers.Add(orbit, orbitRenderer);
         OrbitRenderer orComponent = orbitRenderer.AddComponent<OrbitRenderer>();
         orComponent.orbit = orbit;
         return orbit;
