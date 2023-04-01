@@ -10,8 +10,9 @@ public class OrbitRenderer : MonoBehaviour
     void Start()
     {
         lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Unlit/Color"));
+        lineRenderer.material = new Material(Shader.Find("Unlit/BackfaceColor"));
         lineRenderer.positionCount = orbit.pointCount;
+        lineRenderer.loop = true;
         lineRenderer.SetPositions(orbit.positions);
     }
 
