@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class OrbitManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static OrbitManager Instance { get; private set; }
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
     }
 }
