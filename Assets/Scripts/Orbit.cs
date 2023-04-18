@@ -34,13 +34,8 @@ public class Orbit
     }
 
     public Orbit(CelestialBody center, float eccentricity, float ldSemiMajorAxis)
-        : this(center, eccentricity, ldSemiMajorAxis, Vector3.forward)
+        : this(center, eccentricity, ldSemiMajorAxis, Vector3.forward, Vector3.left)
     { }
-
-    public Orbit(CelestialBody center, float eccentricity, float ldSemiMajorAxis, Vector3 periapsisDirection)
-        : this(center, eccentricity, ldSemiMajorAxis, periapsisDirection, Vector3.left)
-    {
-    }
 
     public Orbit(CelestialBody center, float eccentricity, float ldSemiMajorAxis, Vector3 periapsisDirection, Vector3 periapsisVelocityDirection)
     {
@@ -49,21 +44,26 @@ public class Orbit
         this.ldSemiMajorAxis = ldSemiMajorAxis;
 
         periapsisDirection = periapsisDirection.normalized;
+        periapsisVelocityDirection.x *= -1f;
         periapsisVelocityDirection = periapsisVelocityDirection.normalized;
 
         this.stdGravParam = center.emMass * ldEmDGravitationalConst;
-        Vector3 h = _radius(0f) * _speed(_radius(0f)) * Vector3.Cross(periapsisDirection, periapsisVelocityDirection).normalized;
+        Vector3 h = Vector3.Cross(periapsisDirection, periapsisVelocityDirection).normalized * _radius(0f) * _speed(_radius(0f));
         this.specificAngularMomentum = h;
 
-        inclination = Mathf.Acos(h.z / h.magnitude);
+        inclination = Mathf.Acos(h.y / h.magnitude);
 
         Vector3 n = Vector3.Cross(Vector3.up, h);
+        Debug.Log("h: " + h);
+        Debug.Log("n: " + n);
+        Debug.Log("periapsisDirection: " + periapsisDirection);
+        Debug.Log("periapsisVelocityDirection: " + periapsisVelocityDirection);
         if (inclination == 0 || n.magnitude == 0)
         {
             n = referenceDirection;
             longitudeOfAscendingNode = 0;
         }
-        else if (n.y >= 0)
+        else if (n.z >= 0)
         {
             longitudeOfAscendingNode = Mathf.Acos(n.x / n.magnitude);
         }

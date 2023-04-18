@@ -13,7 +13,7 @@ public class InitScene : MonoBehaviour
         {
             case "PlanetScene":
                 Orbit origin = new Orbit(GameManager.Instance.Center, .2f, .3f);
-                Orbit destination = new Orbit(GameManager.Instance.Center, .6f, 1.5f, new Vector3(3f, 2f, 1f));
+                Orbit destination = new Orbit(GameManager.Instance.Center, .6f, 1.5f, new Vector3(3f, 2f, 1f), new Vector3(-1, 0, 3));
                 Debug.Log("origin" + origin);
                 Debug.Log("destination" + destination);
                 //Orbit transfer = OrbitPlanner.TransferOrbit(origin, destination);
