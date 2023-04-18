@@ -17,7 +17,8 @@ public class Orbit
     public CelestialBody center;
     public float eccentricity;
     public float ldSemiMajorAxis;
-    public Vector2 orbitalPlane;
+    public float inclination;
+    public float longitudeOfAscendingNode;
     public float argumentOfPeriapsis;
 
     public Vector3[] positions;
@@ -63,4 +64,5 @@ public class Orbit
             positions[i] = new Vector3(Mathf.Sin(trueAnomaly), 0, Mathf.Cos(trueAnomaly)) * r;
         }
     }
+
 }

@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     void init()
     {
         gameObject.AddComponent<OrbitManager>();
+        gameObject.AddComponent<PositionManager>();
     }
 
     private void Start() {
