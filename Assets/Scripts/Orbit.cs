@@ -44,16 +44,15 @@ public class Orbit
         this.ldSemiMajorAxis = ldSemiMajorAxis;
 
         periapsisDirection = periapsisDirection.normalized;
-        periapsisVelocityDirection.x *= -1f;
         periapsisVelocityDirection = periapsisVelocityDirection.normalized;
 
         this.stdGravParam = center.emMass * ldEmDGravitationalConst;
-        Vector3 h = Vector3.Cross(periapsisDirection, periapsisVelocityDirection).normalized * _radius(0f) * _speed(_radius(0f));
+        Vector3 h = Vector3.Cross(periapsisVelocityDirection, periapsisDirection).normalized * _radius(0f) * _speed(_radius(0f));
         this.specificAngularMomentum = h;
 
         inclination = Mathf.Acos(h.y / h.magnitude);
 
-        Vector3 n = Vector3.Cross(Vector3.up, h);
+        Vector3 n = Vector3.Cross(h, Vector3.up);
         Debug.Log("h: " + h);
         Debug.Log("n: " + n);
         Debug.Log("periapsisDirection: " + periapsisDirection);
@@ -63,13 +62,13 @@ public class Orbit
             n = referenceDirection;
             longitudeOfAscendingNode = 0;
         }
-        else if (n.z >= 0)
+        else if (n.x >= 0)
         {
-            longitudeOfAscendingNode = Mathf.Acos(n.x / n.magnitude);
+            longitudeOfAscendingNode = 2 * Mathf.PI - Mathf.Acos(n.z / n.magnitude);
         }
         else
         {
-            longitudeOfAscendingNode = 2 * Mathf.PI - Mathf.Acos(n.x / n.magnitude);
+            longitudeOfAscendingNode = Mathf.Acos(n.z / n.magnitude);
         }
 
         argumentOfPeriapsis = Vector3.Angle(n, periapsisDirection) * Mathf.PI / 180f;
@@ -101,6 +100,7 @@ public class Orbit
             frequencies[i] = ldDSpeeds[i] / r / 2 / Mathf.PI;
             positions[i] = rotation * _localPosition(trueAnomaly, r);
         }
+        Debug.Log("periapsis: " + positions[0]);
     }
 
     private float _radius(float trueAnomaly)
@@ -121,9 +121,12 @@ public class Orbit
     }
     private Quaternion _localRotation()
     {
-        Quaternion result = Quaternion.Euler(0, argumentOfPeriapsis * 180f / Mathf.PI, 0);
-        result = Quaternion.Euler(inclination * 180f / Mathf.PI, 0, 0) * result;
-        result = Quaternion.Euler(0, longitudeOfAscendingNode * 180f / Mathf.PI, 0) * result;
+        Quaternion result = Quaternion.Euler(0, argumentOfPeriapsis * -180f / Mathf.PI, 0);
+        result = Quaternion.Euler(0, longitudeOfAscendingNode * -180f / Mathf.PI, 0) * result;
+        result = Quaternion.Euler(inclination * -180f / Mathf.PI, 0, 0) * result;
+        /*Quaternion result = Quaternion.Euler(0, longitudeOfAscendingNode * -180f / Mathf.PI, 0);//
+        result = Quaternion.Euler(inclination * -180f / Mathf.PI, 0, 0) * result;
+        result = Quaternion.Euler(0, argumentOfPeriapsis * -180f / Mathf.PI, 0) * result;*/
         return result;
     }
 

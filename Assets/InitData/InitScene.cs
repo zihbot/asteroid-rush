@@ -12,7 +12,7 @@ public class InitScene : MonoBehaviour
         switch (sceneName)
         {
             case "PlanetScene":
-                Orbit origin = new Orbit(GameManager.Instance.Center, .2f, .3f);
+                Orbit origin = new Orbit(GameManager.Instance.Center, .3f, .3f, new Vector3(0, 1, 1), Vector3.left);
                 Orbit destination = new Orbit(GameManager.Instance.Center, .6f, 1.5f, new Vector3(3f, 2f, 1f), new Vector3(-1, 0, 3));
                 Debug.Log("origin" + origin);
                 Debug.Log("destination" + destination);
