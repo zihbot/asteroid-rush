@@ -121,12 +121,9 @@ public class Orbit
     }
     private Quaternion _localRotation()
     {
-        Quaternion result = Quaternion.Euler(0, argumentOfPeriapsis * -180f / Mathf.PI, 0);
+        Quaternion result = Quaternion.Euler(inclination * -180f / Mathf.PI, 0, 0);
         result = Quaternion.Euler(0, longitudeOfAscendingNode * -180f / Mathf.PI, 0) * result;
-        result = Quaternion.Euler(inclination * -180f / Mathf.PI, 0, 0) * result;
-        /*Quaternion result = Quaternion.Euler(0, longitudeOfAscendingNode * -180f / Mathf.PI, 0);//
-        result = Quaternion.Euler(inclination * -180f / Mathf.PI, 0, 0) * result;
-        result = Quaternion.Euler(0, argumentOfPeriapsis * -180f / Mathf.PI, 0) * result;*/
+        result = Quaternion.Euler(0, argumentOfPeriapsis * -180f / Mathf.PI, 0) * result;
         return result;
     }
 
