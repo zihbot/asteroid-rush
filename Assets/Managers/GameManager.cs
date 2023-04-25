@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         gameObject.AddComponent<OrbitManager>();
         gameObject.AddComponent<PositionManager>();
+        gameObject.AddComponent<SurfaceManager>();
     }
 
     private void Start() {
