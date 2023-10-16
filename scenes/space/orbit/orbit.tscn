@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://kiajie5gh5l7"]
+[gd_scene load_steps=3 format=3 uid="uid://kiajie5gh5l7"]
+
+[ext_resource type="Script" path="res://scenes/space/orbit/orbit_drawer.cs" id="1_coh34"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_ecqud"]
+script/source = "using Godot;
+using System;
+
+public partial class Orbit : Node3D
+{
+	[Export] public OrbitData OrbitData { get; set; } = new OrbitData();
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+}
+"
 
 [node name="Orbit" type="Node3D"]
+script = SubResource("CSharpScript_ecqud")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+script = ExtResource("1_coh34")

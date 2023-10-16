@@ -10,7 +10,7 @@ public partial class OrbitData : Resource
     [Export] public float ArgumentOfPeriapsis { get; set; } = 0;
     [Export] public float MeanAnomaly { get; set; } = 0;
 
-    OrbitData()
+    public OrbitData()
     {
     }
 }
