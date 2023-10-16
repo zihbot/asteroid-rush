@@ -17,10 +17,10 @@ public partial class OrbitDrawer : MeshInstance3D
 		var surfaceArray = new Godot.Collections.Array();
 		surfaceArray.Resize((int)Mesh.ArrayType.Max);
 
-		var verts = new List<Vector3>(){new(0, 0, 0), new(1, 0, 0)};
-		var uvs = new List<Vector2>(){new(0, 0), new(0, 0)};
-		var normals = new List<Vector3>(){new(0, 1, 0), new(0, 1, 0)};
-		var indices = new List<int>(){0, 1};
+		var verts = new List<Vector3>(){new(0, 0, 0), new(1, 0, 0), new(0, 0, 1)};
+		var uvs = new List<Vector2>(){new(0, 0), new(0, 0), new(0, 0)};
+		var normals = new List<Vector3>(){new(0, 1, 0), new(0, 1, 0), new(0, 1, 0)};
+		var indices = new List<int>(){0, 1, 2};
 
 		surfaceArray[(int)Mesh.ArrayType.Vertex] = verts.ToArray();
 		surfaceArray[(int)Mesh.ArrayType.TexUV] = uvs.ToArray();

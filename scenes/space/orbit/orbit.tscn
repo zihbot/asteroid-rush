@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://kiajie5gh5l7"]
 
-[ext_resource type="Script" path="res://scenes/space/orbit/orbit_drawer.cs" id="1_coh34"]
+[ext_resource type="Script" path="res://scenes/space/orbit/OrbitDrawer.cs" id="1_n3t1f"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_ecqud"]
 script/source = "using Godot;
@@ -21,5 +21,8 @@ public partial class Orbit : Node3D
 [node name="Orbit" type="Node3D"]
 script = SubResource("CSharpScript_ecqud")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-script = ExtResource("1_coh34")
+[node name="Drawer" type="MeshInstance3D" parent="."]
+script = ExtResource("1_n3t1f")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.846973, 0.531635, 0, -0.531635, 0.846973, 0, 0.764385, 1.45012)
