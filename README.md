@@ -1,3 +1,3 @@
 # Asteroid Rush
 
-Learning project for Unity. And to have fun :)
+Learning game dev project. And to have fun :)
