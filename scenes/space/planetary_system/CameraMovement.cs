@@ -29,5 +29,22 @@ public partial class CameraMovement : Node3D
 				camPostion = newCamPosition;
 			Camera.LookAtFromPosition(Center + camPostion, Center);
 		}
+		else if (Camera != null && @event is InputEventMouseButton mouseWheel)
+		{
+			var camPostion = Camera.Position - Center;
+			// Zoom in and out
+			if (mouseWheel.ButtonIndex == MouseButton.WheelUp)
+			{
+				camPostion *= 0.95f;
+			}
+			else if (mouseWheel.ButtonIndex == MouseButton.WheelDown)
+			{
+				camPostion *= 1.05f;
+			}
+			else {
+				return;
+			}
+			Camera.LookAtFromPosition(Center + camPostion, Center);
+		}
 	}
 }
