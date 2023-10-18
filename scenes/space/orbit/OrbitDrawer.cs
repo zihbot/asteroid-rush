@@ -22,7 +22,7 @@ public partial class OrbitDrawer : MeshInstance3D
 		var normals = new List<Vector3>();
 		var indices = new List<int>();
 
-		for (float fi = -MathF.PI; fi < MathF.PI; fi += (2 * MathF.PI) / 360)
+		for (float fi = -Mathf.Pi; fi < Mathf.Pi; fi += 2 * Mathf.Pi / 360)
 		{
 			var pos = OrbitData.PositionAtTrueAnomaly(fi);
 			GD.Print(pos);
