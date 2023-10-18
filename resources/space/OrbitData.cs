@@ -44,7 +44,6 @@ public partial class OrbitData : Resource
         var argper = n.Length() < Mathf.Epsilon ? 0 : n.Dot(Periapsis) / n.Length() / Periapsis.Length();
 
         _rotations = new(omega, i, argper);
-        GD.Print(_rotations);
         return _rotations.Value;
     }
 
