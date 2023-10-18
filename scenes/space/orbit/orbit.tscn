@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://kiajie5gh5l7"]
+[gd_scene load_steps=3 format=3 uid="uid://chp1mrqhjiabk"]
 
 [ext_resource type="Script" path="res://scenes/space/orbit/OrbitDrawer.cs" id="1_n3t1f"]
+[ext_resource type="Resource" uid="uid://dno3tmstapavf" path="res://scenes/space/orbit/sampleOrbit.tres" id="2_e7663"]
 
 [node name="Orbit" type="Node3D"]
 
 [node name="Drawer" type="MeshInstance3D" parent="."]
 script = ExtResource("1_n3t1f")
+OrbitData = ExtResource("2_e7663")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.846973, 0.531635, 0, -0.531635, 0.846973, -0.189046, 1.02454, 1.53982)
+transform = Transform3D(1, 0, 0, 0, 0.871582, 0.49025, 0, -0.49025, 0.871582, -0.103896, 1.02454, 1.53982)

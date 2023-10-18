@@ -14,5 +14,8 @@ public partial class CelestialBodyData : Resource
     {
     }
 
-
+    public override string ToString()
+    {
+        return $"CelestialBodyData: Mass: {Mass}, StandardGravitationalParameter: {StandardGravitationalParameter}";
+    }
 }
