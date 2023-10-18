@@ -8,7 +8,3 @@
 [node name="Drawer" type="MeshInstance3D" parent="."]
 script = ExtResource("1_n3t1f")
 OrbitData = ExtResource("2_e7663")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.753804, 0.657099, 0, -0.657099, 0.753804, -0.390189, 1.02454, 1.11429)
-fov = 75.279
