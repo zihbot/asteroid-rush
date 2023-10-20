@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://vyp32prvuw7v"]
+[gd_scene load_steps=4 format=3 uid="uid://vyp32prvuw7v"]
 
 [ext_resource type="Script" path="res://scenes/space/planet/Planet.cs" id="1_3x4se"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k3sbo"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_6b826"]
 
 [node name="Planet" type="Node3D"]
 script = ExtResource("1_3x4se")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_k3sbo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("SphereMesh_6b826")
+skeleton = NodePath("../..")
