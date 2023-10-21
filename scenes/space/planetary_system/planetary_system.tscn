@@ -23,7 +23,7 @@ transform = Transform3D(1, 0, 0, 0, -0.251005, 0.967986, 0, -0.967986, -0.251005
 [node name="CameraMovement" type="Node3D" parent="."]
 script = ExtResource("3_6a6ug")
 
-[node name="PlanetContext" parent="." instance=ExtResource("5_r4bkn")]
-
 [node name="ClickableInputHandler" type="Node3D" parent="."]
 script = ExtResource("6_ruebj")
+
+[node name="PlanetContext" parent="." instance=ExtResource("5_r4bkn")]
