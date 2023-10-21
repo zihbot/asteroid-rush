@@ -8,7 +8,8 @@ public partial class PlanetarySystem : Node3D
 		var planet = GetChild<Planet>(0);
 		planet.PlanetClicked += () =>
 		{
-			GD.Print("Planet clicked");
+			var planetContext = GetNode<Control>("PlanetContext");
+			planetContext.Show();
 		};
 	}
 }

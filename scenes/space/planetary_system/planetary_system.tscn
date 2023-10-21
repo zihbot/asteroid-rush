@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dltrimbavjwbs"]
+[gd_scene load_steps=6 format=3 uid="uid://dltrimbavjwbs"]
 
 [ext_resource type="Script" path="res://scenes/space/planetary_system/PlanetarySystem.cs" id="1_0m8ob"]
 [ext_resource type="PackedScene" uid="uid://vyp32prvuw7v" path="res://scenes/space/planet/planet.tscn" id="1_5c0b1"]
 [ext_resource type="PackedScene" uid="uid://chp1mrqhjiabk" path="res://scenes/space/orbit/orbit.tscn" id="2_4dcjx"]
 [ext_resource type="Script" path="res://scenes/space/planetary_system/CameraMovement.cs" id="3_6a6ug"]
+[ext_resource type="PackedScene" uid="uid://yi1d2sn3u8np" path="res://scenes/UI/planet_context/planet_context.tscn" id="5_r4bkn"]
 
 [node name="PlanetarySystem" type="Node3D"]
 script = ExtResource("1_0m8ob")
@@ -20,3 +21,6 @@ transform = Transform3D(1, 0, 0, 0, -0.251005, 0.967986, 0, -0.967986, -0.251005
 
 [node name="CameraMovement" type="Node3D" parent="."]
 script = ExtResource("3_6a6ug")
+
+[node name="PlanetContext" parent="." instance=ExtResource("5_r4bkn")]
+visible = false
