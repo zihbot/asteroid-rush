@@ -8,7 +8,14 @@ public partial class Planet : Node3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-
+        GetChild<StaticBody3D>(0).InputEvent += (Node camera, InputEvent @event, Vector3 position, Vector3 normal, long shape_idx) =>
+        {
+            if (@event is InputEventMouseButton mouseButton && mouseButton.IsPressed() && mouseButton.ButtonIndex == MouseButton.Left)
+            {
+                GD.Print("Planet clicked");
+                EmitSignal("PlanetClicked");
+            }
+        };
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

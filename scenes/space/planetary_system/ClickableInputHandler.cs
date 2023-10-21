@@ -16,11 +16,13 @@ public partial class ClickableInputHandler : Node3D
 		var start = camera.ProjectRayOrigin(_lastClick ?? Vector2.Zero);
 		var end = start + camera.ProjectRayNormal(_lastClick ?? Vector2.Zero) * camera.Far;
 		var query = PhysicsRayQueryParameters3D.Create(start, end, Constans.PHYSICS_LAYER_MASK_CLICKABLE);
-		GD.Print(start, end);
 		_lastClick = null;
 		var collision = space.IntersectRay(query);
-		GD.Print("Planet ", collision.Count);
-		//EmitSignal("PlanetClicked");
+		if (collision.Count == 0)
+		{
+			return;
+		}
+		//collision[0].As<CollisionShape3D>() Collider.GetParent().EmitSignal(nameof(Planet.PlanetClickedEventHandler));
 	}
 
 	public override void _Input(InputEvent @event)
