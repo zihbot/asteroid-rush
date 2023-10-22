@@ -12,7 +12,6 @@ public partial class Planet : Node3D
         {
             if (@event is InputEventMouseButton mouseButton && mouseButton.IsPressed() && mouseButton.ButtonIndex == MouseButton.Left)
             {
-                GD.Print("Planet clicked");
                 EmitSignal(SignalName.PlanetClicked);
             }
         };

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bin3xgja6vaew"]
+
+[ext_resource type="Script" path="res://scenes/UI/orbit_creator/OrbitCreator.cs" id="1_g5mc1"]
+
+[node name="OrbitCreator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g5mc1")
+
+[node name="Grid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Velocity" type="HSlider" parent="Grid"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+allow_greater = true
+allow_lesser = true
+
+[node name="VelocityLabel" type="Label" parent="Grid"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 1
