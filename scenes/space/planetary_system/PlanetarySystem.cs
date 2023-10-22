@@ -18,7 +18,6 @@ public partial class PlanetarySystem : Node3D
 
     private void NewOrbit()
     {
-        GD.Print("NewOrbit", OrbitCreatorScene);
         if (OrbitCreatorScene == null)
             return;
 

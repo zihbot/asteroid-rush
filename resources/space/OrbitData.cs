@@ -4,7 +4,8 @@ using System;
 public partial class OrbitData : Resource
 {
     [Export] public Vector3 Periapsis { get; private set; } = Vector3.Back;
-    [Export] public Vector3 VelocityAtPeriapsis { get; private set; } = Vector3.Right;
+    private Vector3 _velocityAtPeriapsis = Vector3.Right;
+    [Export] public Vector3 VelocityAtPeriapsis { get => _velocityAtPeriapsis; set { _velocityAtPeriapsis = value; ResetValues(); } }
     [Export] public CelestialBodyData CentralBody { get; private set; } = new CelestialBodyData();
 
     public float SemiMajorAxis { get; private set; } = 1;
@@ -20,6 +21,14 @@ public partial class OrbitData : Resource
 
     public OrbitData()
     {
+    }
+
+    private void ResetValues()
+    {
+        _eccentricity = null;
+        _rotations = null;
+        GD.Print("ResetValues");
+        EmitChanged();
     }
 
     protected float RecalculateEccentricity()
