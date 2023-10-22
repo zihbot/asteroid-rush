@@ -19,7 +19,8 @@ public partial class PlanetContextMenu : Control
     {
         if (@event is InputEventMouseButton mouseButton && mouseButton.IsPressed() && mouseButton.ButtonIndex == MouseButton.Left)
         {
-            if (!GetViewportRect().HasPoint(mouseButton.Position))
+            GD.Print("Planet context menu clicked", mouseButton.Position, GetViewportRect());
+            if (!GetGlobalRect().HasPoint(mouseButton.Position))
             {
                 Hide();
             }
