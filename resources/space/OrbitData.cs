@@ -27,7 +27,6 @@ public partial class OrbitData : Resource
     {
         _eccentricity = null;
         _rotations = null;
-        GD.Print("ResetValues");
         EmitChanged();
     }
 

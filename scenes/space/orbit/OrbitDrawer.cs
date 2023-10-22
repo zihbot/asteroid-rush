@@ -14,7 +14,6 @@ public partial class OrbitDrawer : MeshInstance3D
 
     private void RecalculateMesh()
     {
-        GD.Print("RecalculateMesh");
         var surfaceArray = new Godot.Collections.Array();
         surfaceArray.Resize((int)Mesh.ArrayType.Max);
 

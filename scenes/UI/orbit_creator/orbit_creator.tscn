@@ -25,6 +25,7 @@ columns = 2
 [node name="Velocity" type="HSlider" parent="Grid"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+min_value = 1.0
 allow_greater = true
 allow_lesser = true
 
