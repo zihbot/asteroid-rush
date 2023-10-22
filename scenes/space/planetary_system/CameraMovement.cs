@@ -13,7 +13,7 @@ public partial class CameraMovement : Node3D
         Camera.LookAt(Center, Vector3.Up);
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _UnhandledInput(InputEvent @event)
     {
         // If left mouse button is pressed while dragging the mouse
         if (Camera != null && @event is InputEventMouseMotion mouseMotion && (int)mouseMotion.ButtonMask == (int)MouseButton.Left)
@@ -41,7 +41,8 @@ public partial class CameraMovement : Node3D
             {
                 camPostion *= 1.05f;
             }
-            else {
+            else
+            {
                 return;
             }
             Camera.LookAtFromPosition(Center + camPostion, Center);
