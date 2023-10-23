@@ -13,6 +13,7 @@ public partial class Planet : Node3D
             if (@event is InputEventMouseButton mouseButton && mouseButton.IsPressed() && mouseButton.ButtonIndex == MouseButton.Left)
             {
                 EmitSignal(SignalName.PlanetClicked);
+                GetViewport().SetInputAsHandled();
             }
         };
     }

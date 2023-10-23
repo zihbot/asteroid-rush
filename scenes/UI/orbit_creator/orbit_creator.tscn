@@ -5,11 +5,7 @@
 
 [node name="OrbitCreator" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_g5mc1")
 OrbitScene = ExtResource("2_fvj2k")
 
@@ -18,6 +14,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 404.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
@@ -25,6 +23,7 @@ columns = 2
 [node name="Velocity" type="HSlider" parent="Grid"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_vertical = 4
 min_value = 1.0
 allow_greater = true
 allow_lesser = true

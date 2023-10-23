@@ -22,9 +22,8 @@ public partial class OrbitCreator : Control
 
         if (OrbitScene == null || Target == null)
             return;
-        var orbitScene = OrbitScene.Instantiate();
-        _orbitDrawer = orbitScene.GetNode<OrbitDrawer>("Drawer");
-        _orbitDrawer.OrbitData = _orbitData;
+        var orbitScene = OrbitScene.Instantiate<Orbit>();
+        orbitScene.OrbitData = _orbitData;
         Target.AddChild(orbitScene);
 
         _velocity.Value = 50;
