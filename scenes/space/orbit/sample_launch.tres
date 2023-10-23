@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dx25elrtccxgq"]
+
+[ext_resource type="Script" path="res://resources/space/LaunchTrajectoryData.cs" id="1_7wp0w"]
+[ext_resource type="Script" path="res://resources/space/CelestialBodyData.cs" id="1_lmuoe"]
+
+[sub_resource type="Resource" id="Resource_ylk7r"]
+script = ExtResource("1_lmuoe")
+Mass = 1.0
+Radius = 1.0
+RotationPeriod = 1.0
+
+[resource]
+script = ExtResource("1_7wp0w")
+ReferencePoint = Vector3(0, 0, 1)
+VelocityAtReferencePoint = Vector3(1, 0, 0)
+CentralBody = SubResource("Resource_ylk7r")

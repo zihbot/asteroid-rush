@@ -3,9 +3,9 @@ using System;
 
 public partial class OrbitData : Resource
 {
-    [Export] public Vector3 Periapsis { get; private set; } = Vector3.Back;
-    private Vector3 _velocityAtPeriapsis = Vector3.Right;
-    [Export] public Vector3 VelocityAtPeriapsis { get => _velocityAtPeriapsis; set { _velocityAtPeriapsis = value; ResetValues(); } }
+    [Export] public Vector3 ReferencePoint { get; private set; } = Vector3.Back;
+    private Vector3 _velocityAtReferencePoint = Vector3.Right;
+    [Export] public Vector3 VelocityAtReferencePoint { get => _velocityAtReferencePoint; set { _velocityAtReferencePoint = value; ResetValues(); } }
     [Export] public CelestialBodyData CentralBody { get; private set; } = new CelestialBodyData();
 
     public float SemiMajorAxis { get; private set; } = 1;
@@ -17,7 +17,7 @@ public partial class OrbitData : Resource
     public float LongitudeOfAscendingNode => Rotations.X;
     public float Inclination => Rotations.Y;
     public float ArgumentOfPeriapsis => Rotations.Z;
-    public Vector3 SpecificAngularMomentum => Periapsis.Cross(VelocityAtPeriapsis);
+    public Vector3 SpecificAngularMomentum => ReferencePoint.Cross(VelocityAtReferencePoint);
 
     public OrbitData()
     {
@@ -33,7 +33,7 @@ public partial class OrbitData : Resource
     protected float RecalculateEccentricity()
     {
         // epsilon = v^2 / 2 - mu / r
-        var specificOrbitalEnergy = VelocityAtPeriapsis.LengthSquared() / 2 - CentralBody.StandardGravitationalParameter / Periapsis.Length();
+        var specificOrbitalEnergy = VelocityAtReferencePoint.LengthSquared() / 2 - CentralBody.StandardGravitationalParameter / ReferencePoint.Length();
         // Sqrt(1 + 2 * epsilon * h^2 / mu^2)
         _eccentricity = Mathf.Sqrt(1 + 2 * specificOrbitalEnergy * SpecificAngularMomentum.LengthSquared() / CentralBody.StandardGravitationalParameter / CentralBody.StandardGravitationalParameter);
         return _eccentricity.Value;
@@ -49,13 +49,13 @@ public partial class OrbitData : Resource
 
         var i = Mathf.Acos(h.Y / h.Length());
 
-        var argper = n.Length() < Mathf.Epsilon ? 0 : n.Dot(Periapsis) / n.Length() / Periapsis.Length();
+        var argper = n.Length() < Mathf.Epsilon ? 0 : n.Dot(ReferencePoint) / n.Length() / ReferencePoint.Length();
 
         _rotations = new(omega, i, argper);
         return _rotations.Value;
     }
 
-    public Vector3 PositionAtTrueAnomaly(float fi)
+    public virtual Vector3 PositionAtTrueAnomaly(float fi)
     {
         var r = SpecificAngularMomentum.Length() * SpecificAngularMomentum.Length() / CentralBody.StandardGravitationalParameter / (1 + Eccentricity * Mathf.Cos(fi));
         var x = r * (Mathf.Cos(LongitudeOfAscendingNode) * Mathf.Cos(fi + ArgumentOfPeriapsis) - Mathf.Sin(LongitudeOfAscendingNode) * Mathf.Sin(fi + ArgumentOfPeriapsis) * Mathf.Cos(Inclination));
@@ -66,6 +66,6 @@ public partial class OrbitData : Resource
 
     public override string ToString()
     {
-        return $"OrbitData: Periapsis: {Periapsis}, VelocityAtPeriapsis: {VelocityAtPeriapsis}, CentralBody: {CentralBody}, SemiMajorAxis: {SemiMajorAxis}, Eccentricity: {Eccentricity}, Inclination: {Inclination}, LongitudeOfAscendingNode: {LongitudeOfAscendingNode}, ArgumentOfPeriapsis: {ArgumentOfPeriapsis}, SpecificAngularMomentum: {SpecificAngularMomentum}";
+        return $"OrbitData: Periapsis: {ReferencePoint}, VelocityAtPeriapsis: {VelocityAtReferencePoint}, CentralBody: {CentralBody}, SemiMajorAxis: {SemiMajorAxis}, Eccentricity: {Eccentricity}, Inclination: {Inclination}, LongitudeOfAscendingNode: {LongitudeOfAscendingNode}, ArgumentOfPeriapsis: {ArgumentOfPeriapsis}, SpecificAngularMomentum: {SpecificAngularMomentum}";
     }
 }

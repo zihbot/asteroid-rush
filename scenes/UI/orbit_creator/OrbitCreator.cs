@@ -20,8 +20,7 @@ public partial class OrbitCreator : Control
         _velocityLabel = GetNode<Label>("Grid/VelocityLabel");
         _velocity.ValueChanged += ValueChanged;
 
-        if (OrbitScene == null || Target == null)
-            return;
+        if (OrbitScene == null || Target == null) return;
         var orbitScene = OrbitScene.Instantiate<Orbit>();
         orbitScene.OrbitData = _orbitData;
         Target.AddChild(orbitScene);
@@ -32,13 +31,12 @@ public partial class OrbitCreator : Control
     private void ValueChanged(double value)
     {
         _velocityLabel.Text = value.ToString();
-        _orbitData.VelocityAtPeriapsis = _orbitData.VelocityAtPeriapsis.Normalized() * (float)value / 100;
+        _orbitData.VelocityAtReferencePoint = _orbitData.VelocityAtReferencePoint.Normalized() * (float)value / 100;
     }
 
     public override string[] _GetConfigurationWarnings()
     {
-        if (Target == null)
-            return new string[] { "Target is not set" };
+        if (Target == null) return new string[] { "Target is not set" };
         return Array.Empty<string>();
     }
 }
