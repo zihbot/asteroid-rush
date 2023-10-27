@@ -28,10 +28,12 @@ public partial class LaunchTrajectoryData : OrbitData
         var aRad = CentralBody.StandardGravitationalParameter / r / r;
         var aTan = aMax - aRad;
 
-
         // aTan is quadratic, so vDeltaTan is the quadratic integral of aTan, aMax^3/3
         // vDeltaTan = (aMax * tM^2 - aMax * t0) / 2 - mu * tM / h^2 - mu * tM^2 / (h^2 * t0)
         // var t = vDeltaTan.Length() * 3 / aMax / aMax / aMax;
+
+        var rY = r;
+        var rX = t * t * aTan / 2;
 
         GD.Print($"t: {t}");
 
