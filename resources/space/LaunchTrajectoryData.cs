@@ -35,9 +35,7 @@ public partial class LaunchTrajectoryData : OrbitData
         var rY = r;
         var rX = t * t * aTan / 2;
 
-        GD.Print($"t: {t}");
-
-        var angle = rX / (2 * rMax * Mathf.Pi);
+        var angle = rX / rMax;
 
         var x = rY * (Mathf.Cos(LongitudeOfAscendingNode) * Mathf.Cos(angle + ArgumentOfPeriapsis) - Mathf.Sin(LongitudeOfAscendingNode) * Mathf.Sin(angle + ArgumentOfPeriapsis) * Mathf.Cos(Inclination));
         var y = rY * Mathf.Sin(angle + ArgumentOfPeriapsis) * Mathf.Sin(Inclination);
