@@ -3,8 +3,11 @@
 [ext_resource type="Script" path="res://scenes/space/celestial_body/CelestialBody.cs" id="1_hlu66"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k3sbo"]
+radius = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_6b826"]
+radius = 1.0
+height = 2.0
 
 [node name="CelestialBody" type="Node3D"]
 script = ExtResource("1_hlu66")

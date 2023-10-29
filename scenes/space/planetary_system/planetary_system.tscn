@@ -18,7 +18,7 @@ OrbitCreatorScene = ExtResource("6_70p3x")
 OrbitData = ExtResource("5_3yvo7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.876071, 0.482182, 0, -0.482182, 0.876071, -0.21721, 1.13403, 2.07171)
+transform = Transform3D(1, 0, 0, 0, 0.876071, 0.482182, 0, -0.482182, 0.876071, -0.21721, 2.59158, 3.91831)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.251005, 0.967986, 0, -0.967986, -0.251005, 0, 1.595, 0)

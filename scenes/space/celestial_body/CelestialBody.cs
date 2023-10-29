@@ -13,7 +13,7 @@ public partial class CelestialBody : Node3D
     {
         _systemManager = GetNode<SystemManager>(SystemManager.TreeName);
         _systemManager.SpaceScaleChanged += (scale) => {
-            float bodyScale = scale * Data.Radius * 2;
+            float bodyScale = scale * Data.Radius;
             _staticBody.Scale = new Vector3(bodyScale, bodyScale, bodyScale);
         };
 
