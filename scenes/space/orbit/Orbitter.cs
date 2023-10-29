@@ -3,7 +3,7 @@ using System;
 
 public partial class Orbitter : Node3D
 {
-    [Export] public OrbitData OrbitData;
+    [Export] public OrbitData OrbitData { get; set; } = null;
     [Export] public PackedScene OrbitScene { get; set; } = null;
 
     private SystemManager _systemManager;
@@ -29,7 +29,6 @@ public partial class Orbitter : Node3D
         _parent.GetParent().AddChild(_orbit);
         //orbit.QueueFree();
     }
-
 
     public override void _Process(double delta)
     {
