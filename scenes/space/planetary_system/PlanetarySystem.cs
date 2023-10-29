@@ -5,15 +5,23 @@ public partial class PlanetarySystem : Node3D
 {
     [Export] public PackedScene OrbitCreatorScene;
 
+    private SystemManager _systemManager;
+    private CelestialBody _mainPlanet;
+    private PlanetContextMenu _planetContext;
+
     public override void _Ready()
     {
-        var planet = GetChild<Planet>(0);
-        planet.PlanetClicked += () =>
+        _mainPlanet = GetNode<CelestialBody>("MainPlanet");
+        _mainPlanet.Clicked += () =>
         {
-            var planetContext = GetNode<PlanetContextMenu>("PlanetContext");
-            planetContext.Show();
-            planetContext.NewOrbit += NewOrbit;
+            _planetContext.Show();
         };
+
+        _systemManager = GetNode<SystemManager>(SystemManager.TreeName);
+        _systemManager.SpaceScale = 1 / _mainPlanet.Data.Radius;
+
+        _planetContext = GetNode<PlanetContextMenu>("PlanetContext");
+        _planetContext.NewOrbit += NewOrbit;
     }
 
     private void NewOrbit()
@@ -22,7 +30,7 @@ public partial class PlanetarySystem : Node3D
             return;
 
         var orbitCreator = OrbitCreatorScene.Instantiate<OrbitCreator>();
-        orbitCreator.Target = GetNode<Planet>("Planet");
+        orbitCreator.Target = _mainPlanet;
         AddChild(orbitCreator);
     }
 

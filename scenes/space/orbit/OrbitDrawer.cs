@@ -9,8 +9,14 @@ public partial class OrbitDrawer : MeshInstance3D
 
     public List<Vector3> Vertices { get; private set; } = new List<Vector3>();
 
+    private SystemManager _systemManager;
+
     public override void _Ready()
     {
+        _systemManager = GetNode<SystemManager>(SystemManager.TreeName);
+        _systemManager.SpaceScaleChanged += (scale) => {
+            RecalculateMesh();
+        };
     }
 
     private void SetData(OrbitData data)
@@ -32,9 +38,10 @@ public partial class OrbitDrawer : MeshInstance3D
         var normals = new List<Vector3>();
         var indices = new List<int>();
 
+        //GD.Print($"Recalculating mesh space scale: {_systemManager?.SpaceScale}");
         for (float fi = -Mathf.Pi; fi < Mathf.Pi; fi += 2 * Mathf.Pi / 360)
         {
-            var pos = OrbitData.PositionAtTrueAnomaly(fi);
+            var pos = OrbitData.PositionAtTrueAnomaly(fi) * (_systemManager?.SpaceScale ?? 1);
             Vertices.Add(pos);
             verts.Add(pos);
             uvs.Add(new Vector2(0, 0));

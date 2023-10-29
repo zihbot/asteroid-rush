@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dltrimbavjwbs"]
 
 [ext_resource type="Script" path="res://scenes/space/planetary_system/PlanetarySystem.cs" id="1_0m8ob"]
-[ext_resource type="PackedScene" uid="uid://vyp32prvuw7v" path="res://scenes/space/planet/planet.tscn" id="1_5c0b1"]
 [ext_resource type="PackedScene" uid="uid://chp1mrqhjiabk" path="res://scenes/space/orbit/orbit.tscn" id="2_4dcjx"]
 [ext_resource type="Script" path="res://scenes/space/planetary_system/CameraMovement.cs" id="3_6a6ug"]
+[ext_resource type="PackedScene" uid="uid://db5k5sdseodab" path="res://scenes/space/celestial_body/celestial_body.tscn" id="3_gvcah"]
 [ext_resource type="Resource" uid="uid://dx25elrtccxgq" path="res://scenes/space/orbit/sample_launch.tres" id="5_3yvo7"]
 [ext_resource type="PackedScene" uid="uid://yi1d2sn3u8np" path="res://scenes/UI/planet_context/planet_context.tscn" id="5_r4bkn"]
 [ext_resource type="PackedScene" uid="uid://bin3xgja6vaew" path="res://scenes/UI/orbit_creator/orbit_creator.tscn" id="6_70p3x"]
@@ -12,10 +12,7 @@
 script = ExtResource("1_0m8ob")
 OrbitCreatorScene = ExtResource("6_70p3x")
 
-[node name="Planet" parent="." instance=ExtResource("1_5c0b1")]
-
-[node name="Orbit" parent="." instance=ExtResource("2_4dcjx")]
-visible = false
+[node name="MainPlanet" parent="." instance=ExtResource("3_gvcah")]
 
 [node name="LaunchTrajectory" parent="." instance=ExtResource("2_4dcjx")]
 OrbitData = ExtResource("5_3yvo7")

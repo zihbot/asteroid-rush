@@ -18,7 +18,7 @@ public partial class LaunchTrajectoryData : OrbitData
 
 
         var rMax = ReferencePoint.Length();
-        var rMin = CentralBody.Radius / 2; // Nem kell /2
+        var rMin = CentralBody.Radius;
         var rDelta = rMax - rMin;
 
         var t = tM * (fi / Mathf.Pi + 1f) / 2f;
