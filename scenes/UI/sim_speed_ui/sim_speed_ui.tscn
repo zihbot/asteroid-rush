@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi8505epnry5f"]
+
+[ext_resource type="Script" path="res://scenes/UI/sim_speed_ui/SimSpeedUI.cs" id="1_hdh5s"]
+
+[node name="SimSpeedUI" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_hdh5s")
+
+[node name="Grid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 41.0
+grow_horizontal = 0
+columns = 8
+
+[node name="S1" type="Button" parent="Grid"]
+layout_mode = 2
+toggle_mode = true
+text = "S1"
+
+[node name="S2" type="Button" parent="Grid"]
+layout_mode = 2
+toggle_mode = true
+text = "S2"
+
+[node name="S3" type="Button" parent="Grid"]
+layout_mode = 2
+toggle_mode = true
+text = "S3"
+
+[node name="S4" type="Button" parent="Grid"]
+layout_mode = 2
+toggle_mode = true
+text = "S4"
+
+[node name="S5" type="Button" parent="Grid"]
+layout_mode = 2
+toggle_mode = true
+text = "S5"
+
+[node name="Time" type="Label" parent="Grid"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "0d 0h 0m 0s"
+horizontal_alignment = 1
+
+[node name="Pause" type="Button" parent="Grid"]
+layout_mode = 2
+toggle_mode = true
+text = "II"
+
+[node name="Play" type="Button" parent="Grid"]
+layout_mode = 2
+toggle_mode = true
+text = ">"

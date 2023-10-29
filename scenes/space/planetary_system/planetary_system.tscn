@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dltrimbavjwbs"]
+[gd_scene load_steps=14 format=3 uid="uid://dltrimbavjwbs"]
 
 [ext_resource type="Script" path="res://scenes/space/planetary_system/PlanetarySystem.cs" id="1_0m8ob"]
 [ext_resource type="PackedScene" uid="uid://chp1mrqhjiabk" path="res://scenes/space/orbit/orbit.tscn" id="2_4dcjx"]
 [ext_resource type="Script" path="res://scenes/space/planetary_system/CameraMovement.cs" id="3_6a6ug"]
+[ext_resource type="PackedScene" uid="uid://b6qahoj65ny2x" path="res://scenes/UI/mission_planner/mission_planner.tscn" id="3_b1pcv"]
 [ext_resource type="PackedScene" uid="uid://db5k5sdseodab" path="res://scenes/space/celestial_body/celestial_body.tscn" id="3_gvcah"]
 [ext_resource type="PackedScene" uid="uid://yi1d2sn3u8np" path="res://scenes/UI/planet_context/planet_context.tscn" id="5_r4bkn"]
 [ext_resource type="PackedScene" uid="uid://bin3xgja6vaew" path="res://scenes/UI/orbit_creator/orbit_creator.tscn" id="6_70p3x"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" path="res://scenes/space/planetary_system/AsteroidSpawner.cs" id="6_mlh0f"]
 [ext_resource type="Script" path="res://scenes/space/orbit/Orbitter.cs" id="7_vm2xh"]
 [ext_resource type="Resource" uid="uid://dno3tmstapavf" path="res://scenes/space/orbit/sampleOrbit.tres" id="8_r5bvc"]
+[ext_resource type="PackedScene" uid="uid://bi8505epnry5f" path="res://scenes/UI/sim_speed_ui/sim_speed_ui.tscn" id="12_ic3q3"]
 
 [sub_resource type="Resource" id="Resource_egvkv"]
 script = ExtResource("6_m3awm")
@@ -20,6 +22,7 @@ RotationPeriod = 1.0
 [node name="PlanetarySystem" type="Node3D"]
 script = ExtResource("1_0m8ob")
 OrbitCreatorScene = ExtResource("6_70p3x")
+MissionPlannerScene = ExtResource("3_b1pcv")
 
 [node name="MainPlanet" parent="." instance=ExtResource("3_gvcah")]
 
@@ -31,9 +34,6 @@ transform = Transform3D(1, 0, 0, 0, -0.251005, 0.967986, 0, -0.967986, -0.251005
 
 [node name="CameraMovement" type="Node3D" parent="."]
 script = ExtResource("3_6a6ug")
-
-[node name="PlanetContext" parent="." instance=ExtResource("5_r4bkn")]
-visible = false
 
 [node name="AsteroidSpawner" type="Node3D" parent="."]
 script = ExtResource("6_mlh0f")
@@ -47,3 +47,8 @@ Data = SubResource("Resource_egvkv")
 script = ExtResource("7_vm2xh")
 OrbitData = ExtResource("8_r5bvc")
 OrbitScene = ExtResource("2_4dcjx")
+
+[node name="PlanetContext" parent="." instance=ExtResource("5_r4bkn")]
+visible = false
+
+[node name="SimSpeedUI" parent="." instance=ExtResource("12_ic3q3")]

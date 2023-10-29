@@ -4,9 +4,11 @@ using System;
 public partial class PlanetarySystem : Node3D
 {
     [Export] public PackedScene OrbitCreatorScene;
+    [Export] public PackedScene MissionPlannerScene;
 
     private SystemManager _systemManager;
     private CelestialBody _mainPlanet;
+    private AsteroidSpawner _asteroidSpawner;
     private PlanetContextMenu _planetContext;
 
     public override void _Ready()
@@ -22,7 +24,21 @@ public partial class PlanetarySystem : Node3D
 
         _planetContext = GetNode<PlanetContextMenu>("PlanetContext");
         _planetContext.NewOrbit += NewOrbit;
+
+        _asteroidSpawner = GetNode<AsteroidSpawner>("AsteroidSpawner");
+        _asteroidSpawner.StartMission += StartMission;
     }
+
+    private void StartMission(CelestialBody target)
+    {
+        if (MissionPlannerScene == null) return;
+
+        var missionPlanner = MissionPlannerScene.Instantiate<MissionPlanner>();
+        missionPlanner.Origin = _mainPlanet;
+        missionPlanner.Target = target;
+        AddChild(missionPlanner);
+    }
+
 
     private void NewOrbit()
     {
