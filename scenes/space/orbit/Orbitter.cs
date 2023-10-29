@@ -8,6 +8,7 @@ public partial class Orbitter : Node3D
 
     private SystemManager _systemManager;
     private Node3D _parent;
+    private Orbit _orbit;
     private float trueAnomaly = 0;
 
     public override void _Ready()
@@ -22,7 +23,7 @@ public partial class Orbitter : Node3D
 
     private void CelestialBodyClicked()
     {
-        if (OrbitScene == null) return;
+        if (OrbitScene == null || _orbit != null) return;
         var orbit = OrbitScene.Instantiate<Orbit>();
         orbit.OrbitData = OrbitData;
         _parent.GetParent().AddChild(orbit);
