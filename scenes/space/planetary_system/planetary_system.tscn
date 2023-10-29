@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dltrimbavjwbs"]
+[gd_scene load_steps=11 format=3 uid="uid://dltrimbavjwbs"]
 
 [ext_resource type="Script" path="res://scenes/space/planetary_system/PlanetarySystem.cs" id="1_0m8ob"]
+[ext_resource type="PackedScene" uid="uid://chp1mrqhjiabk" path="res://scenes/space/orbit/orbit.tscn" id="2_4dcjx"]
 [ext_resource type="Script" path="res://scenes/space/planetary_system/CameraMovement.cs" id="3_6a6ug"]
 [ext_resource type="PackedScene" uid="uid://db5k5sdseodab" path="res://scenes/space/celestial_body/celestial_body.tscn" id="3_gvcah"]
 [ext_resource type="PackedScene" uid="uid://yi1d2sn3u8np" path="res://scenes/UI/planet_context/planet_context.tscn" id="5_r4bkn"]
@@ -40,3 +41,4 @@ Data = SubResource("Resource_egvkv")
 [node name="Orbitter" type="Node3D" parent="Asteroid"]
 script = ExtResource("7_vm2xh")
 OrbitData = ExtResource("8_r5bvc")
+OrbitScene = ExtResource("2_4dcjx")
