@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dltrimbavjwbs"]
+[gd_scene load_steps=10 format=3 uid="uid://dltrimbavjwbs"]
 
 [ext_resource type="Script" path="res://scenes/space/planetary_system/PlanetarySystem.cs" id="1_0m8ob"]
 [ext_resource type="Script" path="res://scenes/space/planetary_system/CameraMovement.cs" id="3_6a6ug"]
 [ext_resource type="PackedScene" uid="uid://db5k5sdseodab" path="res://scenes/space/celestial_body/celestial_body.tscn" id="3_gvcah"]
 [ext_resource type="PackedScene" uid="uid://yi1d2sn3u8np" path="res://scenes/UI/planet_context/planet_context.tscn" id="5_r4bkn"]
 [ext_resource type="PackedScene" uid="uid://bin3xgja6vaew" path="res://scenes/UI/orbit_creator/orbit_creator.tscn" id="6_70p3x"]
+[ext_resource type="Script" path="res://resources/space/CelestialBodyData.cs" id="6_m3awm"]
+[ext_resource type="Script" path="res://scenes/space/orbit/Orbitter.cs" id="7_vm2xh"]
+[ext_resource type="Resource" uid="uid://dno3tmstapavf" path="res://scenes/space/orbit/sampleOrbit.tres" id="8_r5bvc"]
+
+[sub_resource type="Resource" id="Resource_egvkv"]
+script = ExtResource("6_m3awm")
+Mass = 0.1
+Radius = 0.1
+RotationPeriod = 1.0
 
 [node name="PlanetarySystem" type="Node3D"]
 script = ExtResource("1_0m8ob")
@@ -23,3 +32,11 @@ script = ExtResource("3_6a6ug")
 
 [node name="PlanetContext" parent="." instance=ExtResource("5_r4bkn")]
 visible = false
+
+[node name="Asteroid" parent="." instance=ExtResource("3_gvcah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.84004, 0, -3.12485)
+Data = SubResource("Resource_egvkv")
+
+[node name="Orbitter" type="Node3D" parent="Asteroid"]
+script = ExtResource("7_vm2xh")
+OrbitData = ExtResource("8_r5bvc")

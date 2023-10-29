@@ -11,6 +11,6 @@ RotationPeriod = 1.0
 
 [resource]
 script = ExtResource("2_eou8k")
-ReferencePoint = Vector3(0, 0, 1)
-VelocityAtReferencePoint = Vector3(1, 0, 0)
+ReferencePoint = Vector3(0, 0, 5)
+VelocityAtReferencePoint = Vector3(0.1, 0, 0)
 CentralBody = SubResource("Resource_youy5")
