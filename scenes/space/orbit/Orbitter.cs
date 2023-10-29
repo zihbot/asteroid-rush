@@ -24,9 +24,9 @@ public partial class Orbitter : Node3D
     private void CelestialBodyClicked()
     {
         if (OrbitScene == null || _orbit != null) return;
-        var orbit = OrbitScene.Instantiate<Orbit>();
-        orbit.OrbitData = OrbitData;
-        _parent.GetParent().AddChild(orbit);
+        _orbit = OrbitScene.Instantiate<Orbit>();
+        _orbit.OrbitData = OrbitData;
+        _parent.GetParent().AddChild(_orbit);
         //orbit.QueueFree();
     }
 
