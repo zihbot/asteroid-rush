@@ -23,3 +23,7 @@ grow_vertical = 2
 [node name="NewOrbitButton" type="Button" parent="Box"]
 layout_mode = 2
 text = "New orbit"
+
+[node name="StartMissionButton" type="Button" parent="Box"]
+layout_mode = 2
+text = "Start Mission"
