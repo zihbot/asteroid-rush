@@ -16,8 +16,8 @@ public partial class Orbitter : Node3D
 
 	public override void _Process(double delta)
 	{
-		trueAnomaly += (float)delta;
-		trueAnomaly = Mathf.Wrap(trueAnomaly, -Mathf.Pi, Mathf.Pi);
+        var deltaF = Mathf.PosMod((float)delta, Mathf.Pi * 2);
+		trueAnomaly = Mathf.Wrap(trueAnomaly + deltaF, -Mathf.Pi, Mathf.Pi);
 		if (_parent == null || !_parent.Visible || OrbitData == null) return;
 
 		var position = OrbitData.PositionAtTrueAnomaly(trueAnomaly);
