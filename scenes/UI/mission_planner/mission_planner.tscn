@@ -18,15 +18,6 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="Velocity" type="HSlider" parent="Grid"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_vertical = 4
-min_value = 1.0
-value = 1.0
-allow_greater = true
-allow_lesser = true
-
 [node name="VelocityLabel" type="Label" parent="Grid"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2

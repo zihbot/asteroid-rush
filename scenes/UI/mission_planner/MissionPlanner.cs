@@ -8,5 +8,10 @@ public partial class MissionPlanner : Control
 
 	public override void _Ready()
 	{
+        if (Origin == null || Target == null)
+        {
+            QueueFree();
+            return;
+        }
 	}
 }
